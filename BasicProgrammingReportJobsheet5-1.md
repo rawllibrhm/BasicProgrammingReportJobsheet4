@@ -64,7 +64,7 @@ The program is run to display the KRS according to the UKT payment status.
 
 **Question 4: Modify the program by adding an ELSE structure so that when the user enters `false`, the output is `Registration rejected. Please pay your UKT first`.**
 
-'''java
+```java
 package Week5;
 import java.util.Scanner;
 
@@ -99,7 +99,7 @@ public class SelectionIfElse12 {
         input.close();
     }
 }
-'''
+```
 
 
 The program is modified with an ELSE statement and tested using both `true` and `false`.
