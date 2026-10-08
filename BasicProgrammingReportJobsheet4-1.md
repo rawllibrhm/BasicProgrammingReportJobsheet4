@@ -1,5 +1,10 @@
-[BasicProgrammingReportJobsheet4-1.md](https://github.com/user-attachments/files/33215180/BasicProgrammingReportJobsheet4-1.md)
+[Uploading BasicProgrammingReportJobsheet4-2.md…]()
 # BASIC PROGRAMMING PRACTICUM REPORT
+
+![Java](https://img.shields.io/badge/Java-21-orange?logo=openjdk&logoColor=white)
+![Topic](https://img.shields.io/badge/Topic-Selection-blue)
+![Jobsheet](https://img.shields.io/badge/Jobsheet-4-success)
+![Class](https://img.shields.io/badge/Class-TI__1I-purple)
 
 **MEETING-5: Selection**
 
@@ -21,6 +26,18 @@
 ## 1. OBJECTIVE
 
 The practical work in this chapter focuses on selection structures in Java, including `IF`, `IF-ELSE`, `IF-ELSE IF-ELSE`, `SWITCH-CASE`, and the ternary operator.
+
+### Summary of Programs
+
+| No | File | Structure | Status |
+|----|------|-----------|--------|
+| 1 | `SelectionIf25.java` | IF / IF-ELSE | Done |
+| 2 | `SelectionSwitch25.java` | SWITCH-CASE | Done |
+| 3 | `SelectionIfElse25.java` | IF-ELSE IF-ELSE | Done |
+| 4 | `Assignment1Selection25.java` | Ternary operator | Done |
+| 5 | `Assignment2Selection25.java` | IF-ELSE (flowchart) | Done |
+| 6 | `AssignmentParking25.java` | IF-ELSE | Done |
+| 7 | `AssignmentQueue25.java` | SWITCH-CASE + default | Done |
 
 ---
 
@@ -69,6 +86,9 @@ Please Print Your KRS and Ask to Your DPA to Sign It
 
 **Answer:** The value that must be entered is `true`. The IF statement runs the lines inside its block only when the condition evaluates to `true`. The variable `uktPaid` is a `boolean`, and the condition `if (uktPaid)` is satisfied only when `uktPaid` holds `true`. If `false` is entered, the condition is not satisfied and both lines inside the block are skipped.
 
+> [!NOTE]
+> The condition of an `if` must be a `boolean` expression. Only `true` lets the program enter the block.
+
 **Question 2: Run the program, then enter `false`. Which lines are printed and which lines are not? Explain the execution flow when the IF condition is false!**
 
 **Answer:** The header lines (`--- Print KRS SIAKAD ---` and the question prompt) are still printed because they are outside the IF block. The two lines inside the IF block ("UKT Payment Verified." and "Please Print Your KRS and Ask to Your DPA to Sign It") are **not** printed. The flow is: the program reads `false`, evaluates the condition `uktPaid`, finds it is false, skips the whole IF block, and continues to the next statement after the block (`input.close()`), and then the program ends with no further output.
@@ -79,6 +99,12 @@ Please Print Your KRS and Ask to Your DPA to Sign It
 
 - `TRUE`: the program runs normally and prints the two lines of the IF block. `Scanner.nextBoolean()` is not case-sensitive, so `TRUE`, `True`, and `true` are all read as the boolean value `true`.
 - `yes`: the program stops with an error because `nextBoolean()` only accepts the words `true` or `false` (in any letter case). Any other input cannot be converted to a boolean, so Java throws `InputMismatchException`.
+
+> [!TIP]
+> `TRUE` works because `nextBoolean()` ignores letter case.
+
+> [!WARNING]
+> `yes` crashes the program because it is not the word `true` or `false`.
 
 ```
 --- Print KRS SIAKAD ---
@@ -92,6 +118,19 @@ Exception in thread "main" java.util.InputMismatchException
 ```
 
 **Question 4: Modify the program by adding an ELSE structure so that when the user enters `false`, the output is "Registration rejected. Please pay your UKT first".**
+
+The change from the previous version (the `else` block is added):
+
+```diff
+         if (uktPaid) {
+             System.out.println("UKT Payment Verified.");
+             System.out.println("Please Print Your KRS and Ask to Your DPA to Sign It");
++        } else {
++            System.out.println("Registration rejected. Please pay your UKT first");
+         }
+```
+
+Complete code:
 
 ```java
 package Week5;
@@ -211,7 +250,19 @@ KRS for Semester 5 is Displayed
 KRS for Semester 6 is Displayed
 ```
 
+Experiment (the `break` in case 5 is removed):
+
+```diff
+         case 5:
+             System.out.println("KRS for Semester 5 is Displayed");
+-            break;
+         case 6:
+```
+
 Without `break`, the program continues running the statements of the next case (case 6) even though the value does not match it. This behavior is called *fall-through*. It stops only when a `break` is reached or the switch ends. So the function of `break` is to terminate the switch block after the matching case has finished, so that the following cases are not executed. (The code was restored to its original form afterwards.)
+
+> [!IMPORTANT]
+> Forgetting `break` causes *fall-through*: the next case also runs even though it does not match.
 
 **Question 2: Run the program with the input 10, then with the input 0. What is the output? Explain the role of `default` and what happens if `default` is deleted.**
 
@@ -222,6 +273,9 @@ Invalid semester entered.
 ```
 
 The values 10 and 0 do not match any `case` (1 to 8), so the program runs the `default` block. The role of `default` is to handle every value that does not match any case, such as invalid input. If `default` is deleted, the program still compiles and runs, but for input 10 or 0 nothing is printed after the input, so the user gets no feedback that the input is invalid.
+
+> [!TIP]
+> Always add a `default` block to handle unexpected input.
 
 **Question 3: Change the data type of the semester variable to `double`, then compile the program. Does it compile successfully? Write down the error message and explain its cause. List the data types that can be used as the expression in a switch.**
 
@@ -242,6 +296,9 @@ Case constants in a switch on 'double' must have type 'double'
 - `enum`
 
 Not allowed: `long`, `float`, `double`, and `boolean`.
+
+> [!CAUTION]
+> A `switch` on `double` does not compile. Use `int`, `char`, `String`, or `enum` instead.
 
 **Question 4: Create `SelectionIfElse25.java`. Convert the program into an IF - ELSE IF - ELSE form with exactly the same output. Which one is easier to read, and why?**
 
@@ -356,11 +413,25 @@ Registration rejected. Please pay your UKT first
 
 **Answer:** The ternary operator is better used for short, simple decisions with two outcomes that only need to produce a value, such as assigning one of two messages to a variable. It should not be used when the logic is complex, has many branches, needs several statements per branch, or is nested, because it becomes hard to read. In those cases `if-else` is better.
 
+> [!TIP]
+> Rule of thumb: one condition + two values = ternary. More than that = `if-else`.
+
 ---
 
 ### 3.2 Assignment 2: KRS SKS Validation (`Assignment2Selection25.java`)
 
 A KRS system validates the number of credits (SKS) taken by a student, where the maximum allowed is 24 credits. The program follows the given flowchart: if `totalCredits > 24` it prints "Exceeds the limit", otherwise it prints "KRS is valid".
+
+```mermaid
+flowchart TD
+    A([Start]) --> B[/"int totalCredits"/]
+    B --> C[/"input totalCredits"/]
+    C --> D{"totalCredits > 24 ?"}
+    D -- Yes --> E[/"Exceeds the limit"/]
+    D -- No --> F[/"KRS is valid"/]
+    E --> G([End])
+    F --> G
+```
 
 #### 3.2.1 Program Code
 
@@ -408,6 +479,9 @@ Exceeds the limit
 ### 3.3 Assignment 3A: Parking System (`AssignmentParking25.java`)
 
 Paid parking for two-wheeled vehicles: the fee is Rp 2,000 for the first 2 hours, then Rp 1,000 for each additional hour.
+
+> [!NOTE]
+> Fee = 2000 for duration <= 2 hours, otherwise 2000 + (duration - 2) x 1000.
 
 #### 3.3.1 Program Code
 
@@ -457,6 +531,9 @@ Parking Fee: Rp. 5000
 ---
 
 ### 3.4 Assignment 3B: Academic Queue Machine (`AssignmentQueue25.java`)
+
+> [!IMPORTANT]
+> The `default` block prints **"Service code is not available"** for any code outside 1-4.
 
 #### 3.4.1 Program Code
 
@@ -523,3 +600,6 @@ Service code is not available
 ## 4. CONCLUSION
 
 The practical work demonstrates how selection structures are used to make decisions in Java programs. `IF` runs a block only when its condition is true, `IF-ELSE` adds an alternative path, and `IF-ELSE IF-ELSE` handles several conditions in order. `SWITCH-CASE` is easier to organize when comparing one variable against many exact values, but it needs `break` to prevent fall-through and `default` to handle unmatched values. The ternary operator is suitable for short, simple decisions that return a value.
+
+> [!TIP]
+> Choose `if-else` for ranges and complex conditions, `switch` for many exact values, and the ternary operator for short two-way decisions.
