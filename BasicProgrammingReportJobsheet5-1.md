@@ -1,3 +1,4 @@
+[Markdown_R25.md](https://github.com/user-attachments/files/33213679/Markdown_R25.md)
 # JOBSHEET 4 - SELECTION 1
 
 ## Student Identity
@@ -27,7 +28,7 @@ At the beginning of every semester, students must print their KRS (Study Plan Ca
 package Week5;
 import java.util.Scanner;
 
-public class SelectionIf12 {
+public class SelectionIfR25 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         
@@ -68,32 +69,19 @@ The program is run to display the KRS according to the UKT payment status.
 package Week5;
 import java.util.Scanner;
 
-public class SelectionIfElse12 {
+public class SelectionIf25 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+        
         System.out.println("--- Print KRS SIAKAD --- ");
-        System.out.print("Enter Your Current Semester: ");
-
-        int semester = input.nextInt();
-
-        if(semester == 1) {
-            System.out.println("KRS for Semester 1 is Displayed");
-        }else if(semester == 2) {
-            System.out.println("KRS for Semester 2 is Displayed");
-        }else if(semester == 3) {
-            System.out.println("KRS for Semester 3 is Displayed");
-        }else if(semester == 4) {
-            System.out.println("KRS for Semester 4 is Displayed");
-        }else if(semester == 5) {
-            System.out.println("KRS for Semester 5 is Displayed");
-        }else if(semester == 6) {
-            System.out.println("KRS for Semester 6 is Displayed");
-        }else if(semester == 7) {
-            System.out.println("KRS for Semester 7 is Displayed");
-        }else if(semester == 8) {
-            System.out.println("KRS for Semester 8 is Displayed");
-        }else {
-            System.out.println("Invalid semester entered.");
+        System.out.print("Has Your UKT Been Paid? (true/false): ");
+        boolean uktPaid = input.nextBoolean();
+        
+        if (uktPaid) {
+            System.out.println("UKT Payment Verified.");
+            System.out.println("Please Print Your KRS and Ask to Your DPA to Sign It");
+        } else {
+            System.out.println("Registration rejected. Please pay your UKT first");
         }
         
         input.close();
@@ -116,7 +104,7 @@ The SIAKAD system checks the student's current semester, then shows the KRS for 
 package Week5;
 import java.util.Scanner;
 
-public class SelectionSwitch12 {
+public class SelectionSwitchR25 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("--- Print KRS SIAKAD --- ");
@@ -213,7 +201,7 @@ package Week5;
 
 import java.util.Scanner;
 
-public class TernaryOperator12 {
+public class TernaryOperatorR25 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
@@ -249,8 +237,29 @@ A KRS system validates the number of credits (SKS) taken by a student, where the
 #### 3.2.1 Program Code Java
 
 ```java
-// Assignment2SelectionAttendanceNo.java
-// Program implementation based on the flowchart in the practicum report.
+package Week5;
+import java.util.Scanner;
+
+public class Assignment2SelectionAttendanceNo {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+        System.out.println("--- KRS SKS Validation ---");
+        System.out.print("Enter the number of SKS you want to take: ");
+        int sks = input.nextInt();
+        
+        // Validasi SKS maksimal 24
+        if (sks > 24) {
+            System.out.println("Validation failed: Maximum allowed SKS is 24 credits.");
+        } else if (sks > 0) {
+            System.out.println("Validation success: You are taking " + sks + " credits.");
+        } else {
+            System.out.println("Validation failed: Invalid SKS amount.");
+        }
+        
+        input.close();
+    }
+}
 ```
 
 #### 3.2.2 Execution Result / Screenshot Output
@@ -264,8 +273,38 @@ The program result is displayed according to the number of SKS entered.
 #### 3.3.1 Program Code Java
 
 ```java
-// AssignmentParkingAttendanceNo.java
-// Parking System implementation based on the practicum exercise.
+package Week5;
+import java.util.Scanner;
+
+public class AssignmentParkingAttendanceNo {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+        System.out.println("--- Parking System ---");
+        System.out.print("Enter vehicle type (1 for Car, 2 for Motorcycle): ");
+        int vehicleType = input.nextInt();
+        
+        System.out.print("Enter parking duration (in hours): ");
+        int hours = input.nextInt();
+        
+        int totalFee = 0;
+        
+        // Menghitung tarif menggunakan IF-ELSE
+        if (vehicleType == 1) {
+            totalFee = hours * 5000;
+            System.out.println("Vehicle: Car");
+            System.out.println("Total Parking Fee: Rp " + totalFee);
+        } else if (vehicleType == 2) {
+            totalFee = hours * 2000;
+            System.out.println("Vehicle: Motorcycle");
+            System.out.println("Total Parking Fee: Rp " + totalFee);
+        } else {
+            System.out.println("Invalid vehicle type entered.");
+        }
+        
+        input.close();
+    }
+}
 ```
 
 #### 3.3.2 Execution Result / Screenshot Output
@@ -279,8 +318,44 @@ The program displays the parking result according to the entered data.
 #### 3.4.1 Program Code Java
 
 ```java
-// AssignmentQueueAttendanceNo.java
-// Academic Queue Machine implementation using SWITCH-CASE.
+package Week5;
+import java.util.Scanner;
+
+public class AssignmentQueueAttendanceNo {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+        System.out.println("--- Academic Queue Machine ---");
+        System.out.println("1. Academic Affairs");
+        System.out.println("2. Student Affairs");
+        System.out.println("3. Finance & Payment");
+        System.out.println("4. IT Support");
+        System.out.print("Enter your selected service code (1-4): ");
+        
+        int serviceCode = input.nextInt();
+        
+        switch(serviceCode) {
+            case 1:
+                System.out.println("Queue for Academic Affairs. Please wait.");
+                break;
+            case 2:
+                System.out.println("Queue for Student Affairs. Please wait.");
+                break;
+            case 3:
+                System.out.println("Queue for Finance & Payment. Please wait.");
+                break;
+            case 4:
+                System.out.println("Queue for IT Support. Please wait.");
+                break;
+            default:
+                // Pesan default sesuai dengan instruksi pada dokumen
+                System.out.println("Service code is not available");
+                break;
+        }
+        
+        input.close();
+    }
+}
 ```
 
 The program includes a `default` case to handle codes outside 1–4 with the message:
