@@ -109,6 +109,22 @@ public class SelectionIf25 {
 
 The program is modified with an ELSE statement and tested using both `true` and `false`.
 
+### The result when the input is true:
+```text
+--- Print KRS SIAKAD --- 
+Has Your UKT Been Paid? (true/false)
+TRUE
+UKT Payment Verified.
+Please Print Your KRS and Ask to Your DPA to Sign It
+```
+
+### The result when the input is false:
+```text
+--- Print KRS SIAKAD --- 
+Has Your UKT Been Paid? (true/false)
+false
+Registration rejected. Please pay your UKT first
+```
 ---
 
 ### 2.2 Experiment 2: SWITCH-CASE to Print the KRS
