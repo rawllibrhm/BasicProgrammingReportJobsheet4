@@ -24,8 +24,24 @@ At the beginning of every semester, students must print their KRS (Study Plan Ca
 #### 2.1.1 Program Code Java
 
 ```java
-// SelectionIf12.java
-// Program code as provided in the practicum report.
+package Week5;
+import java.util.Scanner;
+
+public class SelectionIf12 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+        System.out.println("--- Print KRS SIAKAD --- ");
+        System.out.print("Has Your UKT Been Paid? (true/false): ");
+        boolean uktPaid = input.nextBoolean();
+        
+        if(uktPaid) {
+            System.out.println("UKT Payment Verified.");
+            System.out.println("Please Print Your KRS and Ask to Your DPA to Sign It");
+        }
+        input.close();
+    }
+}
 ```
 
 #### 2.1.2 Execution Result / Screenshot Output
@@ -59,8 +75,48 @@ The SIAKAD system checks the student's current semester, then shows the KRS for 
 #### 2.2.1 Program Code Java
 
 ```java
-// SelectionSwitch12.java
-// Program code as provided in the practicum report.
+package Week5;
+import java.util.Scanner;
+
+public class SelectionSwitch12 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("--- Print KRS SIAKAD --- ");
+        System.out.print("Enter Your Current Semester: ");
+
+        int semester = input.nextInt();
+
+        switch(semester) {
+            case 1:
+                System.out.println("KRS for Semester 1 is Displayed");
+                break;
+            case 2:
+                System.out.println("KRS for Semester 2 is Displayed");
+                break;
+            case 3:
+                System.out.println("KRS for Semester 3 is Displayed");
+                break;
+            case 4:
+                System.out.println("KRS for Semester 4 is Displayed");
+                break;
+            case 5:
+                System.out.println("KRS for Semester 5 is Displayed");
+                break;
+            case 6:
+                System.out.println("KRS for Semester 6 is Displayed");
+                break;
+            case 7:
+                System.out.println("KRS for Semester 7 is Displayed");
+                break;
+            case 8:
+                System.out.println("KRS for Semester 8 is Displayed");
+                break;
+            default:
+                System.out.println("Invalid semester entered.");
+        }
+        input.close();
+    }
+}
 ```
 
 #### 2.2.2 Execution Result / Screenshot Output
