@@ -181,9 +181,9 @@ public class SelectionSwitchR25 {
 #### 2.2.2 Execution Result / Screenshot Output
 ```text
 --- Print KRS SIAKAD --- 
-Has Your UKT Been Paid? (true/false)
-false
-Registration rejected. Please pay your UKT first
+Enter Your Current Semester:
+6
+KRS for Semester 6 is Displayed
 ```
 
 The program is compiled and run using the semester input.
