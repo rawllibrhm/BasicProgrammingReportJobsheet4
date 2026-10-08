@@ -179,6 +179,12 @@ public class SelectionSwitchR25 {
 ```
 
 #### 2.2.2 Execution Result / Screenshot Output
+```text
+--- Print KRS SIAKAD --- 
+Has Your UKT Been Paid? (true/false)
+false
+Registration rejected. Please pay your UKT first
+```
 
 The program is compiled and run using the semester input.
 
@@ -187,6 +193,13 @@ The program is compiled and run using the semester input.
 **Question 1: Delete the `break;` statement in case 5, then compile and run the program again with the input 5. Explain the function of `break` in SWITCH-CASE!**
 
 **Answer:** The output will display semester 5 & 6.
+```text
+--- Print KRS SIAKAD --- 
+Enter Your Current Semester:
+5
+KRS for Semester 5 is Displayed
+KRS for Semester 6 is Displayed
+```
 
 The function of `break` in the switch-case is to stop the progress when entering the specific statement. The remaining cases will be stopped, so it only displays the specific statement.
 
