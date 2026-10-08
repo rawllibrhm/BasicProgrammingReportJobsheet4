@@ -69,6 +69,15 @@ The program is run to display the KRS according to the UKT payment status.
 
 **Question 3: Run the program, then enter `TRUE` in capital letters and `yes`. What happens with each input? If the program stops with an error, explain the cause!**
 
+```text
+yes
+Exception in thread "main" java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:977)
+	at java.base/java.util.Scanner.next(Scanner.java:1632)
+	at java.base/java.util.Scanner.nextBoolean(Scanner.java:1932)
+	at Week5.SelectionIf12.main(SelectionIf12.java:10)
+```
+
 **Answer:** If we enter `TRUE`, the program will run clearly. If we enter `yes`, the program will display an error.
 
 **Question 4: Modify the program by adding an ELSE structure so that when the user enters `false`, the output is `Registration rejected. Please pay your UKT first`.**
