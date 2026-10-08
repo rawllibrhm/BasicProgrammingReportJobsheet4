@@ -1,5 +1,9 @@
-[Markdown_R25.md](https://github.com/user-attachments/files/33213679/Markdown_R25.md)
-# JOBSHEET 4 - SELECTION 1
+[BasicProgrammingReportJobsheet4-1.md](https://github.com/user-attachments/files/33215180/BasicProgrammingReportJobsheet4-1.md)
+# BASIC PROGRAMMING PRACTICUM REPORT
+
+**MEETING-5: Selection**
+
+**JOBSHEET 4**
 
 ## Student Identity
 
@@ -8,11 +12,15 @@
 - **Study Program:** D-IV Informatics Engineering
 - **Class:** TI_1I
 
+**INFORMATION TECHNOLOGY DEPARTMENT**
+**STATE POLYTECHNIC OF MALANG**
+**2026/2027**
+
 ---
 
 ## 1. OBJECTIVE
 
-The practical work in this chapter focuses on selection structures in Java, including `IF`, `IF-ELSE`, `SWITCH-CASE`, and the ternary operator.
+The practical work in this chapter focuses on selection structures in Java, including `IF`, `IF-ELSE`, `IF-ELSE IF-ELSE`, `SWITCH-CASE`, and the ternary operator.
 
 ---
 
@@ -22,65 +30,7 @@ The practical work in this chapter focuses on selection structures in Java, incl
 
 At the beginning of every semester, students must print their KRS (Study Plan Card) so it can be signed by their Academic Advisor (DPA). SIAKAD will check the student's UKT (tuition fee) payment status. If the student has fully paid the UKT, the system shows the KRS so it can be printed.
 
-#### 2.1.1 Program Code Java
-
-```java
-package Week5;
-import java.util.Scanner;
-
-public class SelectionIfR25 {
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        
-        System.out.println("--- Print KRS SIAKAD --- ");
-        System.out.print("Has Your UKT Been Paid? (true/false): ");
-        boolean uktPaid = input.nextBoolean();
-        
-        if(uktPaid) {
-            System.out.println("UKT Payment Verified.");
-            System.out.println("Please Print Your KRS and Ask to Your DPA to Sign It");
-        }
-        input.close();
-    }
-}
-```
-
-#### 2.1.2 Execution Result / Screenshot Output
-
-```text
---- Print KRS SIAKAD ---
-Has Your UKT Been Paid? (true/false)
-true
-UKT Payment Verified.
-Please Print Your KRS and Ask to Your DPA to Sign It
-```
-
-The program is run to display the KRS according to the UKT payment status.
-
-#### 2.1.3 Answers to Questions / Reflection Questions
-
-**Question 1: What value must you enter so that both lines inside the IF block are printed? Explain why only that value is accepted!**
-
-**Answer:** `True`, because those two blocks are inside the IF statement. If I enter `False`, those two blocks in the IF statement will not be printed.
-
-**Question 2: Run the program, then enter `false`. Which lines are printed and which lines are not? Explain the execution flow when the IF condition is false!**
-
-**Answer:** The lines in IF are not printed because the IF statement only runs its code when the condition is true.
-
-**Question 3: Run the program, then enter `TRUE` in capital letters and `yes`. What happens with each input? If the program stops with an error, explain the cause!**
-
-```text
-yes
-Exception in thread "main" java.util.InputMismatchException
-	at java.base/java.util.Scanner.throwFor(Scanner.java:977)
-	at java.base/java.util.Scanner.next(Scanner.java:1632)
-	at java.base/java.util.Scanner.nextBoolean(Scanner.java:1932)
-	at Week5.SelectionIf12.main(SelectionIf12.java:10)
-```
-
-**Answer:** If we enter `TRUE`, the program will run clearly. If we enter `yes`, the program will display an error.
-
-**Question 4: Modify the program by adding an ELSE structure so that when the user enters `false`, the output is `Registration rejected. Please pay your UKT first`.**
+#### 2.1.1 Program Code (`SelectionIf25.java`, IF only)
 
 ```java
 package Week5;
@@ -89,63 +39,123 @@ import java.util.Scanner;
 public class SelectionIf25 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        
-        System.out.println("--- Print KRS SIAKAD --- ");
-        System.out.print("Has Your UKT Been Paid? (true/false): ");
+
+        System.out.println("--- Print KRS SIAKAD ---");
+        System.out.println("Has Your UKT Been Paid? (true/false)");
         boolean uktPaid = input.nextBoolean();
-        
+
+        if (uktPaid) {
+            System.out.println("UKT Payment Verified.");
+            System.out.println("Please Print Your KRS and Ask to Your DPA to Sign It");
+        }
+        input.close();
+    }
+}
+```
+
+#### 2.1.2 Execution Result
+
+```
+--- Print KRS SIAKAD ---
+Has Your UKT Been Paid? (true/false)
+true
+UKT Payment Verified.
+Please Print Your KRS and Ask to Your DPA to Sign It
+```
+
+#### 2.1.3 Answers to Questions
+
+**Question 1: What value must you enter so that both lines inside the IF block are printed? Explain why only that value is accepted!**
+
+**Answer:** The value that must be entered is `true`. The IF statement runs the lines inside its block only when the condition evaluates to `true`. The variable `uktPaid` is a `boolean`, and the condition `if (uktPaid)` is satisfied only when `uktPaid` holds `true`. If `false` is entered, the condition is not satisfied and both lines inside the block are skipped.
+
+**Question 2: Run the program, then enter `false`. Which lines are printed and which lines are not? Explain the execution flow when the IF condition is false!**
+
+**Answer:** The header lines (`--- Print KRS SIAKAD ---` and the question prompt) are still printed because they are outside the IF block. The two lines inside the IF block ("UKT Payment Verified." and "Please Print Your KRS and Ask to Your DPA to Sign It") are **not** printed. The flow is: the program reads `false`, evaluates the condition `uktPaid`, finds it is false, skips the whole IF block, and continues to the next statement after the block (`input.close()`), and then the program ends with no further output.
+
+**Question 3: Run the program, then enter `TRUE` in capital letters and `yes`. What happens with each input? If the program stops with an error, explain the cause!**
+
+**Answer:**
+
+- `TRUE`: the program runs normally and prints the two lines of the IF block. `Scanner.nextBoolean()` is not case-sensitive, so `TRUE`, `True`, and `true` are all read as the boolean value `true`.
+- `yes`: the program stops with an error because `nextBoolean()` only accepts the words `true` or `false` (in any letter case). Any other input cannot be converted to a boolean, so Java throws `InputMismatchException`.
+
+```
+--- Print KRS SIAKAD ---
+Has Your UKT Been Paid? (true/false)
+yes
+Exception in thread "main" java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:947)
+	at java.base/java.util.Scanner.next(Scanner.java:1602)
+	at java.base/java.util.Scanner.nextBoolean(Scanner.java:1902)
+	at Week5.SelectionIf25.main(SelectionIf25.java:10)
+```
+
+**Question 4: Modify the program by adding an ELSE structure so that when the user enters `false`, the output is "Registration rejected. Please pay your UKT first".**
+
+```java
+package Week5;
+import java.util.Scanner;
+
+public class SelectionIf25 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("--- Print KRS SIAKAD ---");
+        System.out.println("Has Your UKT Been Paid? (true/false)");
+        boolean uktPaid = input.nextBoolean();
+
         if (uktPaid) {
             System.out.println("UKT Payment Verified.");
             System.out.println("Please Print Your KRS and Ask to Your DPA to Sign It");
         } else {
             System.out.println("Registration rejected. Please pay your UKT first");
         }
-        
         input.close();
     }
 }
 ```
 
+The result when the input is `true`:
 
-The program is modified with an ELSE statement and tested using both `true` and `false`.
-
-### The result when the input is true:
-```text
---- Print KRS SIAKAD --- 
+```
+--- Print KRS SIAKAD ---
 Has Your UKT Been Paid? (true/false)
-TRUE
+true
 UKT Payment Verified.
 Please Print Your KRS and Ask to Your DPA to Sign It
 ```
 
-### The result when the input is false:
-```text
---- Print KRS SIAKAD --- 
+The result when the input is `false`:
+
+```
+--- Print KRS SIAKAD ---
 Has Your UKT Been Paid? (true/false)
 false
 Registration rejected. Please pay your UKT first
 ```
+
 ---
 
 ### 2.2 Experiment 2: SWITCH-CASE to Print the KRS
 
 The SIAKAD system checks the student's current semester, then shows the KRS for that semester so it can be printed.
 
-#### 2.2.1 Program Code Java
+#### 2.2.1 Program Code (`SelectionSwitch25.java`)
 
 ```java
 package Week5;
 import java.util.Scanner;
 
-public class SelectionSwitchR25 {
+public class SelectionSwitch25 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        System.out.println("--- Print KRS SIAKAD --- ");
-        System.out.print("Enter Your Current Semester: ");
 
+        System.out.println("--- Print KRS SIAKAD ---");
+        System.out.println("Enter Your Current Semester: ");
         int semester = input.nextInt();
 
-        switch(semester) {
+        switch (semester) {
             case 1:
                 System.out.println("KRS for Semester 1 is Displayed");
                 break;
@@ -178,248 +188,338 @@ public class SelectionSwitchR25 {
 }
 ```
 
-#### 2.2.2 Execution Result / Screenshot Output
-```text
---- Print KRS SIAKAD --- 
+#### 2.2.2 Execution Result
+
+```
+--- Print KRS SIAKAD ---
 Enter Your Current Semester:
 6
 KRS for Semester 6 is Displayed
 ```
 
-The program is compiled and run using the semester input.
+#### 2.2.3 Answers to Questions
 
-#### 2.2.3 Answers to Questions / Reflection Questions
+**Question 1: Delete the `break;` statement in case 5, then compile and run the program again with the input 5. Write down the output, then explain the function of `break`.**
 
-**Question 1: Delete the `break;` statement in case 5, then compile and run the program again with the input 5. Explain the function of `break` in SWITCH-CASE!**
+**Answer:** Output with input `5` (without `break` in case 5):
 
-**Answer:** The output will display semester 5 & 6.
-```text
---- Print KRS SIAKAD --- 
+```
+--- Print KRS SIAKAD ---
 Enter Your Current Semester:
 5
 KRS for Semester 5 is Displayed
 KRS for Semester 6 is Displayed
 ```
 
-The function of `break` in the switch-case is to stop the progress when entering the specific statement. The remaining cases will be stopped, so it only displays the specific statement.
+Without `break`, the program continues running the statements of the next case (case 6) even though the value does not match it. This behavior is called *fall-through*. It stops only when a `break` is reached or the switch ends. So the function of `break` is to terminate the switch block after the matching case has finished, so that the following cases are not executed. (The code was restored to its original form afterwards.)
 
-**Question 2: Run the program with the input 10, then with the input 0. What is the output? Explain the role of `default`.**
+**Question 2: Run the program with the input 10, then with the input 0. What is the output? Explain the role of `default` and what happens if `default` is deleted.**
 
-**Answer:** `Invalid semester`, because 10 and 0 are not in the program cases and do not match any value, so the program processes the `default` case. The role of `default` is to provide a block of code that runs when no case matches the value in the switch statement.
+**Answer:** For both inputs the output is:
 
-**Question 3: Change the data type of the semester variable to `double`, then compile the program. Does it compile successfully? List the data types that can be used as the expression in a switch!**
+```
+Invalid semester entered.
+```
 
-**Answer:** The program will produce an error and display an error message:
+The values 10 and 0 do not match any `case` (1 to 8), so the program runs the `default` block. The role of `default` is to handle every value that does not match any case, such as invalid input. If `default` is deleted, the program still compiles and runs, but for input 10 or 0 nothing is printed after the input, so the user gets no feedback that the input is invalid.
 
-```text
+**Question 3: Change the data type of the semester variable to `double`, then compile the program. Does it compile successfully? Write down the error message and explain its cause. List the data types that can be used as the expression in a switch.**
+
+**Answer:** No, the program fails to compile. The error message shown by the IDE:
+
+```
 Case constants in a switch on 'double' must have type 'double'
 ```
 
-Data types that can be used as the expression in a switch are:
+(The exact wording depends on the compiler/IDE version.) The cause is that a `switch` expression does not support `double`: floating-point values are not exact, so they cannot be reliably matched against constants like `case 1:`. Data types that can be used as the expression in a switch:
 
-- `int`
 - `byte`
-- `char`
-- `String`
 - `short`
+- `char`
+- `int`
+- their wrapper classes (`Byte`, `Short`, `Character`, `Integer`)
+- `String`
+- `enum`
 
-**Question 4: Convert the KRS printing program that uses SWITCH-CASE into an IF-ELSE IF-ELSE form. Which one is easier to read for this case, and why?**
+Not allowed: `long`, `float`, `double`, and `boolean`.
 
-**Answer:** In my opinion, Switch-Case is easier to read in this case because it is more organized and easier to read when handling multiple exact semester numbers.
+**Question 4: Create `SelectionIfElse25.java`. Convert the program into an IF - ELSE IF - ELSE form with exactly the same output. Which one is easier to read, and why?**
+
+```java
+package Week5;
+import java.util.Scanner;
+
+public class SelectionIfElse25 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("--- Print KRS SIAKAD ---");
+        System.out.println("Enter Your Current Semester: ");
+        int semester = input.nextInt();
+
+        if (semester == 1) {
+            System.out.println("KRS for Semester 1 is Displayed");
+        } else if (semester == 2) {
+            System.out.println("KRS for Semester 2 is Displayed");
+        } else if (semester == 3) {
+            System.out.println("KRS for Semester 3 is Displayed");
+        } else if (semester == 4) {
+            System.out.println("KRS for Semester 4 is Displayed");
+        } else if (semester == 5) {
+            System.out.println("KRS for Semester 5 is Displayed");
+        } else if (semester == 6) {
+            System.out.println("KRS for Semester 6 is Displayed");
+        } else if (semester == 7) {
+            System.out.println("KRS for Semester 7 is Displayed");
+        } else if (semester == 8) {
+            System.out.println("KRS for Semester 8 is Displayed");
+        } else {
+            System.out.println("Invalid semester entered.");
+        }
+        input.close();
+    }
+}
+```
+
+The output (valid input `5`):
+
+```
+--- Print KRS SIAKAD ---
+Enter Your Current Semester:
+5
+KRS for Semester 5 is Displayed
+```
+
+The output when the input is invalid (`10`):
+
+```
+--- Print KRS SIAKAD ---
+Enter Your Current Semester:
+10
+Invalid semester entered.
+```
+
+**Answer:** In my opinion, SWITCH-CASE is easier to read for this case because every semester is compared against one variable using exact values. Each `case` is a clear, separate line, while IF-ELSE IF repeats the condition `semester == ...` every time, which makes the code longer.
 
 ---
 
 ## 3. ASSIGNMENT
 
-The following tasks are performed in this Jobsheet:
+### 3.1 Assignment 1: Ternary Operator (`Assignment1Selection25.java`)
 
-1. Convert the IF-ELSE selection structure into a Ternary Operator.
-2. Implement the given KRS validation flowchart using IF-ELSE.
-3. Implement the Parking System using IF-ELSE.
-4. Implement the Academic Queue Machine using SWITCH-CASE with a `default` case.
-
-### 3.1 Assignment 1: Ternary Operator
-
-#### 3.1.1 Program Code Java
+#### 3.1.1 Program Code
 
 ```java
 package Week5;
-
 import java.util.Scanner;
 
-public class TernaryOperatorR25 {
+public class Assignment1Selection25 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        System.out.println("--- Print KRS SIAKAD --- ");
+        System.out.println("--- Print KRS SIAKAD ---");
         System.out.println("Has Your UKT Been Paid? (true/false)");
         boolean uktPaid = input.nextBoolean();
 
-        String message = (uktPaid)
-                ? "UKT Payment Verified. Please Print Your KRS and Ask to Your DPA to Sign It"
+        String message = uktPaid
+                ? "UKT Payment Verified.\nPlease Print Your KRS and Ask to Your DPA to Sign It"
                 : "Registration rejected. Please pay your UKT first";
 
         System.out.println(message);
-
         input.close();
     }
 }
 ```
 
-#### 3.1.2 Execution Result / Screenshot Output
+#### 3.1.2 Execution Result
 
-The result is displayed for both `true` and `false` inputs.
+Input `true`:
+
+```
+--- Print KRS SIAKAD ---
+Has Your UKT Been Paid? (true/false)
+true
+UKT Payment Verified.
+Please Print Your KRS and Ask to Your DPA to Sign It
+```
+
+Input `false`:
+
+```
+--- Print KRS SIAKAD ---
+Has Your UKT Been Paid? (true/false)
+false
+Registration rejected. Please pay your UKT first
+```
 
 #### 3.1.3 Reflection
 
-**Answer:** In my opinion, the Ternary Operator is better used for short, simple decisions that return a value. Otherwise, `if-else` should be used when the logic becomes more complex.
+**Answer:** The ternary operator is better used for short, simple decisions with two outcomes that only need to produce a value, such as assigning one of two messages to a variable. It should not be used when the logic is complex, has many branches, needs several statements per branch, or is nested, because it becomes hard to read. In those cases `if-else` is better.
 
 ---
 
-### 3.2 Assignment 2: KRS SKS Validation
+### 3.2 Assignment 2: KRS SKS Validation (`Assignment2Selection25.java`)
 
-A KRS system validates the number of credits (SKS) taken by a student, where the maximum number allowed is 24 credits.
+A KRS system validates the number of credits (SKS) taken by a student, where the maximum allowed is 24 credits. The program follows the given flowchart: if `totalCredits > 24` it prints "Exceeds the limit", otherwise it prints "KRS is valid".
 
-#### 3.2.1 Program Code Java
+#### 3.2.1 Program Code
 
 ```java
 package Week5;
 import java.util.Scanner;
 
-public class Assignment2SelectionAttendanceNo {
+public class Assignment2Selection25 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        
-        System.out.println("--- KRS SKS Validation ---");
-        System.out.print("Enter the number of SKS you want to take: ");
-        int sks = input.nextInt();
-        
-        // Validasi SKS maksimal 24
-        if (sks > 24) {
-            System.out.println("Validation failed: Maximum allowed SKS is 24 credits.");
-        } else if (sks > 0) {
-            System.out.println("Validation success: You are taking " + sks + " credits.");
+
+        System.out.println("Enter total credits (SKS): ");
+        int totalCredits = input.nextInt();
+
+        if (totalCredits > 24) {
+            System.out.println("Exceeds the limit");
         } else {
-            System.out.println("Validation failed: Invalid SKS amount.");
+            System.out.println("KRS is valid");
         }
-        
         input.close();
     }
 }
 ```
 
-#### 3.2.2 Execution Result / Screenshot Output
+#### 3.2.2 Execution Result
 
-The program result is displayed according to the number of SKS entered.
+Input `20`:
+
+```
+Enter total credits (SKS):
+20
+KRS is valid
+```
+
+Input `30`:
+
+```
+Enter total credits (SKS):
+30
+Exceeds the limit
+```
 
 ---
 
-### 3.3 Assignment 3A: Parking System
+### 3.3 Assignment 3A: Parking System (`AssignmentParking25.java`)
 
-#### 3.3.1 Program Code Java
+Paid parking for two-wheeled vehicles: the fee is Rp 2,000 for the first 2 hours, then Rp 1,000 for each additional hour.
+
+#### 3.3.1 Program Code
 
 ```java
 package Week5;
 import java.util.Scanner;
 
-public class AssignmentParkingAttendanceNo {
+public class AssignmentParking25 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        
-        System.out.println("--- Parking System ---");
-        System.out.print("Enter vehicle type (1 for Car, 2 for Motorcycle): ");
-        int vehicleType = input.nextInt();
-        
-        System.out.print("Enter parking duration (in hours): ");
-        int hours = input.nextInt();
-        
-        int totalFee = 0;
-        
-        // Menghitung tarif menggunakan IF-ELSE
-        if (vehicleType == 1) {
-            totalFee = hours * 5000;
-            System.out.println("Vehicle: Car");
-            System.out.println("Total Parking Fee: Rp " + totalFee);
-        } else if (vehicleType == 2) {
-            totalFee = hours * 2000;
-            System.out.println("Vehicle: Motorcycle");
-            System.out.println("Total Parking Fee: Rp " + totalFee);
+
+        System.out.println("--- Paid Parking System for Two-Wheeled Vehicles ---");
+        System.out.println("Enter Parking Duration (hours): ");
+        int parkingDuration = input.nextInt();
+        int parkingFee = 2000;
+
+        if (parkingDuration <= 2) {
+            System.out.println("Parking Fee: Rp. " + parkingFee);
         } else {
-            System.out.println("Invalid vehicle type entered.");
+            System.out.println("Parking Fee: Rp. " + (parkingFee + (parkingDuration - 2) * 1000));
         }
-        
         input.close();
     }
 }
 ```
 
-#### 3.3.2 Execution Result / Screenshot Output
+#### 3.3.2 Execution Result
 
-The program displays the parking result according to the entered data.
+Input `2`:
+
+```
+--- Paid Parking System for Two-Wheeled Vehicles ---
+Enter Parking Duration (hours):
+2
+Parking Fee: Rp. 2000
+```
+
+Input `5`:
+
+```
+--- Paid Parking System for Two-Wheeled Vehicles ---
+Enter Parking Duration (hours):
+5
+Parking Fee: Rp. 5000
+```
 
 ---
 
-### 3.4 Assignment 3B: Academic Queue Machine
+### 3.4 Assignment 3B: Academic Queue Machine (`AssignmentQueue25.java`)
 
-#### 3.4.1 Program Code Java
+#### 3.4.1 Program Code
 
 ```java
 package Week5;
 import java.util.Scanner;
 
-public class AssignmentQueueAttendanceNo {
+public class AssignmentQueue25 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        
-        System.out.println("--- Academic Queue Machine ---");
-        System.out.println("1. Academic Affairs");
-        System.out.println("2. Student Affairs");
-        System.out.println("3. Finance & Payment");
-        System.out.println("4. IT Support");
-        System.out.print("Enter your selected service code (1-4): ");
-        
+
+        System.out.println("State Polytechnic of Malang Student Services");
+        System.out.println("Enter Your Service Code: ");
         int serviceCode = input.nextInt();
-        
-        switch(serviceCode) {
+
+        switch (serviceCode) {
             case 1:
-                System.out.println("Queue for Academic Affairs. Please wait.");
+                System.out.println("Legalization of Diploma");
+                System.out.println("The Location is on Counter A");
                 break;
             case 2:
-                System.out.println("Queue for Student Affairs. Please wait.");
+                System.out.println("Certificate of Active Student Status");
+                System.out.println("The Location is on Counter B");
                 break;
             case 3:
-                System.out.println("Queue for Finance & Payment. Please wait.");
+                System.out.println("UKT Payment");
+                System.out.println("The Location is on Counter C");
                 break;
             case 4:
-                System.out.println("Queue for IT Support. Please wait.");
+                System.out.println("Application for Academic Leave");
+                System.out.println("The Location is on Counter D");
                 break;
             default:
-                // Pesan default sesuai dengan instruksi pada dokumen
                 System.out.println("Service code is not available");
-                break;
         }
-        
         input.close();
     }
 }
 ```
 
-The program includes a `default` case to handle codes outside 1–4 with the message:
+#### 3.4.2 Execution Result
 
-```text
-Service code is not available
+Input `3`:
+
+```
+State Polytechnic of Malang Student Services
+Enter Your Service Code:
+3
+UKT Payment
+The Location is on Counter C
 ```
 
-#### 3.4.2 Execution Result / Screenshot Output
+Input `7` (outside 1-4):
 
-The program displays the queue service according to the selected service code.
+```
+State Polytechnic of Malang Student Services
+Enter Your Service Code:
+7
+Service code is not available
+```
 
 ---
 
 ## 4. CONCLUSION
 
-The practical work demonstrates how selection structures can be used to make decisions in Java programs. `IF`, `IF-ELSE`, `IF-ELSE IF-ELSE`, `SWITCH-CASE`, and the Ternary Operator each have different uses depending on the complexity and form of the decision.
-
-`IF-ELSE` is useful for conditional logic, while `SWITCH-CASE` is easier to organize when handling multiple exact values. The Ternary Operator is suitable for short and simple decisions that return a value.
-
----
+The practical work demonstrates how selection structures are used to make decisions in Java programs. `IF` runs a block only when its condition is true, `IF-ELSE` adds an alternative path, and `IF-ELSE IF-ELSE` handles several conditions in order. `SWITCH-CASE` is easier to organize when comparing one variable against many exact values, but it needs `break` to prevent fall-through and `default` to handle unmatched values. The ternary operator is suitable for short, simple decisions that return a value.
