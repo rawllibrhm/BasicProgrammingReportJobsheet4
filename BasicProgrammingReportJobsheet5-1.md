@@ -47,6 +47,14 @@ public class SelectionIfR25 {
 
 #### 2.1.2 Execution Result / Screenshot Output
 
+```text
+--- Print KRS SIAKAD ---
+Has Your UKT Been Paid? (true/false)
+true
+UKT Payment Verified.
+Please Print Your KRS and Ask to Your DPA to Sign It
+```
+
 The program is run to display the KRS according to the UKT payment status.
 
 #### 2.1.3 Answers to Questions / Reflection Questions
