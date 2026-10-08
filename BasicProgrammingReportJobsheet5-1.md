@@ -64,6 +64,44 @@ The program is run to display the KRS according to the UKT payment status.
 
 **Question 4: Modify the program by adding an ELSE structure so that when the user enters `false`, the output is `Registration rejected. Please pay your UKT first`.**
 
+'''java
+package Week5;
+import java.util.Scanner;
+
+public class SelectionIfElse12 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("--- Print KRS SIAKAD --- ");
+        System.out.print("Enter Your Current Semester: ");
+
+        int semester = input.nextInt();
+
+        if(semester == 1) {
+            System.out.println("KRS for Semester 1 is Displayed");
+        }else if(semester == 2) {
+            System.out.println("KRS for Semester 2 is Displayed");
+        }else if(semester == 3) {
+            System.out.println("KRS for Semester 3 is Displayed");
+        }else if(semester == 4) {
+            System.out.println("KRS for Semester 4 is Displayed");
+        }else if(semester == 5) {
+            System.out.println("KRS for Semester 5 is Displayed");
+        }else if(semester == 6) {
+            System.out.println("KRS for Semester 6 is Displayed");
+        }else if(semester == 7) {
+            System.out.println("KRS for Semester 7 is Displayed");
+        }else if(semester == 8) {
+            System.out.println("KRS for Semester 8 is Displayed");
+        }else {
+            System.out.println("Invalid semester entered.");
+        }
+        
+        input.close();
+    }
+}
+'''
+
+
 The program is modified with an ELSE statement and tested using both `true` and `false`.
 
 ---
